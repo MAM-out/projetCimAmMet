@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- PAGE settings -->
+        <link rel="icon" href="{{ absolute_url(asset('assets/img/favicon_amiens.png')) }}">
+        <title>{% block title %}Gestion cartes d'accès cimetières{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        <meta name="description" content="Gestion cartes d'accès cimetières">
+        <meta name="keywords" content="pas de référencement pour un intranet ^^">
+        <meta name="author" content="MM">
+        <!-- CSS dependencies -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/styles.css')) }}">
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+    <!-- A mettre en lien ? Active Directory -->
+
+    <div class="container">
+      <div class="row py-0">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 bg-primary">
+          <p class="text-center text-uppercase text-white pt-2"><b> Username</b></p>
+        </div>
+      </div>
+    </div>
+
+<!-- Entête interface cimetiere -->
+
+    <div class="container">
+      <div class="row py-2">
+        <div class="col-md-1">
+          <a href="/">
+            <img class="img-fluid d-block" src="{{ absolute_url(asset('assets/img/Logo_Amiens.png')) }}"></a>
+        </div>
+        <div class="col-md-11">
+          <h1 class="text-center text-dark"><b>GESTION&nbsp; |&nbsp; ACCES CIMETIERES</b></h1>
+        </div>
+      </div>
+    </div>
+
+<!-- Menu -->
+
+    <div class="container">
+      <div class="row py-2">
+        <div class="col-md-12">
+          <ul class="nav nav-tabs">
+            <li class="nav-item"> 
+              <a class="nav-link text-uppercase" href="/cimetiere/usager-recherche" >
+                <i class="fa fa-address-card"></i>&nbsp; Usagers</a> 
+            </li>
+            <li class="nav-item text-dark"> 
+              <a class="nav-link text-uppercase" href="#"  >
+                <i class="fa fa-university"></i>&nbsp; cimetieres</a> 
+              </li>
+            <li class="nav-item" id="fa fa-server"> 
+              <a class="nav-link text-uppercase" href="/inscription" >
+                <i class="fa fa-user-circle"></i>&nbsp; GESTIONNAIRES</a> 
+              </li>
+            <li class="nav-item" id="fa fa-server"> 
+              <a class="nav-link text-uppercase" href="#">
+                <i class="fa fa-server"></i>&nbsp; activites</a> 
+              </li>
+          </ul>
+          <div class="tab-content mt-2">
+            <div class="tab-pane fade show active" id="tabone" role="tabpanel">
+              <p>Les accès sont limités selon vos droits de gestion, contactez le chef de service pour plus d'informations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        {% block body %}{% endblock %}
+
+        <!-- footer -->
+ 
+        <div class="container ">
+          <div class="row pt-5 text-center">
+            <div class="col" >
+              <p class="mb-1">© 2021 DSI Amiens Metropole</p>
+            </div>
+          </div>
+        </div>
+
+
+ 
+      
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script src="assets/js/validation.js"></script>
+</body>
+
+</html>

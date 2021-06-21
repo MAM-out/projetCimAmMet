@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GESTION  |  ACCES CIMETIERES {% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+
+        <div class="col-md-8">
+          <p class="lead">CREATION CARTES D'ACCES</p>
+          <form action="#" method="post" >
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group"> 
+                  <input type="text" class="form-control" placeholder="Nom de famille" name="usager_nom_famille"> 
+                </div>
+              </div>
+              <div class="col-md-6">
+              <div class="form-group"> 
+                  <input type="text" class="form-control" placeholder="Prénom 1" name="usager_prenom_1"> 
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group"> 
+                  <input type="text" class="form-control" placeholder="Nom d'usage" name="usager_nom_usage"> 
+                </div>
+              </div>
+              <div class="col-md-6">
+              <div class="form-group"> 
+                  <input type="text" class="form-control" placeholder="Prénom 2" name="usager_prenom_2"> 
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">  
+                  <input type="text" class="form-control" placeholder="Adresse 1" name="usager_adress_1">
+                </div>
+                <div class="form-group">  
+                  <input type="text" class="form-control" placeholder="Adresse 2" name="usager_adress_2"> 
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ville" name="usager_ville">
+                </div>
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Code Postal" name="usager_cp">
+                </div>
+                {# amettre une fois la table immat crée et en jointure
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="N° immatriculation 1">
+                </div>
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="N° immatriculation 2">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="N° immatriculation 3">
+                </div>
+               
+               en recherche pour passer le datimeInterface...
+                <div class="form-group">
+                <label>Date de naissance</label>
+                        <input type="string" class="form-control" placeholder="Date de naissance" name="usager_d_naissance">
+                </div> #}
+                <div class="form-group">
+                <cite>à mettre sous forme de constante 1 = particulier, 2 = Amens MET, 3 = Pro</cite>
+                <input type="text" class="form-control" placeholder="Type d'usager" name="usager_role">
+                </div>
+                <div class="form-group">
+                <input type="number" class="form-control" placeholder="N° carte" name="usager_n_carte">
+                </div>
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Usager valide=O, non=N" name="usager_status_valid">
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                  <div class="form-group">
+                   <cite>à mettre sous forme de constante <br>
+                        La Madeleine = 7 | Longpré = 5 | Montières = 4 | Petit St Jean = 6 | St Pierre = 2 | Renancourt = 3 | Ancien St Acheul = 1 | Nouveau St Acheul = 13</cite>
+
+                      <label>Cimetière</label>    
+                      <input type="number"  class="form-control"  placeholder="N° du cimetière" name="usager_id_cimetiere">
+                  </div>  
+                  {# en recherche pour implementer le datetimeinterface, trouver comment faire un + 1 an ou + 3 ans automatique #}
+                <div class="form-group">
+                 <label>Fin de validité</label>    
+                  <input type="date"  class="form-control"  placeholder="Fin de validité" name="usager_date_fin_valid">
+                  </div>  
+                </div>
+            </div>
+           
+            <div class="row">
+              <div class="col">
+              <button type="submit" class="btn btn-primary btn-block btn-lg"> ENREGISTRER</button>
+        
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        {# menu usagers côte #}
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col">
+             <a class="btn btn-primary w-100 my-1 text-left btn-lg" href="/cimetiere/usager-recherche">
+               <i class="fa fa-search"></i>&nbsp; RECHERCHER USAGER
+             </a>
+           </div>        
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="btn btn-primary w-100 my-1 text-left btn-lg" href="/cimetiere/nouvel_usager">
+                <i class="fa fa-plus-circle"></i>&nbsp; CREER UNE CARTE
+              </a>
+            </div>
+          </div>
+         <!-- <div class="row">
+            <div class="col">
+              <a class="btn btn-primary w-100 my-1 text-left btn-lg" href="#">
+                <i class="fa fa-refresh"></i>&nbsp; MODIFIER UNE FICHE
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="btn btn-primary w-100 my-1 text-left btn-lg" href="#">
+                <i class="fa fa-calendar"></i>&nbsp; RENOUVELLER UNE CARTE
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="btn btn-primary w-100 my-1 text-left btn-lg" href="#">
+                <i class="fa fa-times"></i>&nbsp; RESILLIER UNE CARTE
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="btn btn-primary w-100 my-1 text-left btn-lg" href="#">
+                <i class="fa fa-university"></i>&nbsp; AFFECTER UN CIMETIERE
+              </a>
+            </div>
+          </div>
+          <div class="row  text-center">
+          <div class="col">
+            <a class="btn btn-primary   w-100 my-1 text-left btn-lg" href="#">
+            <i class="fa fa-download"></i>&nbsp; EXPORTER LES DONNEES</a>
+          </div>
+        </div>-->
+
+        </div>
+
+  </div>
+</div>
+
+{% endblock %}
