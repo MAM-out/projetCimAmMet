@@ -12,13 +12,24 @@
           <!--<form action="" method="get" >
           
           tests -->
+    {{ form_start(form) }} 
+
     <div class="row">
-              <div class="col-md-6">
+              <div class="col">
                 <div class="form-group"> 
-                 {{ form[recherche_usager] }}
+                {{ form_row(form.usager_nom_famille) }}                
                 </div>
               </div>
      </div>
+     <div class="row">
+              <div class="col">
+                <div class="form-group"> 
+                  <button type="submit" class="btn btn-primary btn-block btn-lg" href="#">RECHERCHER</button>                
+                </div>
+              </div>
+     </div>
+     
+    {{ form_end(form) }}
 
           <!--idée du formulaire final-->
 
@@ -150,7 +161,7 @@
             <div class="row">
               <div class="col">
                  <div class="form-group">
-                 <button type="submit" class="btn btn-primary btn-block btn-lg" href="#">RECHERCHER</button>
+               <!--  <button type="submit" class="btn btn-primary btn-block btn-lg" href="#">RECHERCHER</button>-->
                  </div>
                </div>
             </div>

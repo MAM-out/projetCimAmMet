@@ -3,12 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Usagers;
+use App\Entity\UsagerRecherche;
+use Symfony\Component\Form\Form;
 use App\Form\UsagerRechercheType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Form;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -74,14 +75,50 @@ class CimetiereController extends AbstractController
     }
 
     /**
+    * @Route("/cimetiere/verif-table-usagers", name="verif_usager")
+    */
+    public function usager_lire()
+    {
+        // récupérer tous les usagers de la table usagers de la BD
+        // et les mettre dans le tableau $usagers // ,['usagers'=> $usagers]
+
+    $usagers= $this->getDoctrine()->getRepository(Usagers::class)->findAll();
+
+    return $this->render('/cimetiere/lire_table_usagers.html.twig',
+                        ['usagers'=> $usagers]);
+
+    }
+
+
+    /**
     * @Route("/cimetiere/usager-recherche", name="recherche_usager")
     */
     public function usager_chercher(Request $request)
     {
-        $rechercheUsagerForm = $this->createForm(UsagerRechercheType::class);
-        return $this->render('cimetiere/recherche-usager.html.twig',
-            ['UsagerRechercheType' => $rechercheUsagerForm->createView()],
-                            );
+        $usagerRecherche = new UsagerRecherche();
+        $form = $this->createForm(UsagerRechercheType::class, $usagerRecherche);
+        $form->handleRequest($request);
+        //tableau vide initial
+        $usagers= [];
+
+        if($form->isSubmitted() && $form->isValid()) 
+        {
+            // reccuperation du nom ou autre champ tapé dans le formulaire
+            $usager_nom_famille = $usagerRecherche->getUsagerNomFamille();
+            if ($usager_nom_famille!="")
+            
+            // si un bon nom , affichage de tous les usagers ayant ce nom
+            $usagers= $this->getDoctrine()->getRepository(Usagers::class)->findBy(['usager_nom_famille' => $usager_nom_famille]);
+
+            else
+            // sinom affiche tout / a changer aprés
+            $usagers= $this->getDoctrine()->getRepository(Usagers::class)->findAll();
+        }   
+
+            return $this->render('cimetiere/recherche-usager.html.twig',
+            ['form' =>$form->createView(), 'usagers' => $usagers]);
+      
+     
             
     }
 

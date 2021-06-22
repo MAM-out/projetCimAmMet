@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title%} Liste des utilisateurs{% endblock %}
+
+{% block body %}
+<div class="container">
+
+<table class="">
+ <tbody>
+    {% for user in users %}
+    <tr>
+    <td>{{ user.getUsername() }}</td>
+      <td><div class="row px-2 py-1 mx-2">
+      <a href="#" class="btn btn-primary btn-block">MODIFIER</a>
+      </div></td>
+      <td><div class="row px-2 py-1 mx-2">
+      <a href="#" class="btn btn-primary btn-block">SUPPRIMER</a>
+      </div></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+
+{% endblock %}

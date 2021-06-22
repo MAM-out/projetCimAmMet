@@ -39,16 +39,37 @@ class SecurityController extends AbstractController
           // si l'on souhaite rediriger   return $this->redirectToRoute('security_login');
         }
 
-        return $this->render('security/registration.html.twig', [
-            'form' => $form->createView()
+        $users= $this->getDoctrine()->getRepository(Users::class)->findAll();
+
+
+        return $this->render('/security/registration.html.twig', [
+            'form' => $form->createView(),
+            'users'=> $users
         ]);
     }
 
-      /**
+ 
+    /**
      * @Route("/connexion", name="security_login")
      */
     public function login()
     {
-        return $this->render('security/login.html.twig');
+        return $this->render('/security/login.html.twig');
     }
+
+    /**
+    * @Route("/verif-utilisateurs", name="verif_utilisateurs")
+    */
+    public function usager_lire()
+    {
+        // récupérer tous les utilisateurs de la table usagers de la BD
+        // et les mettre dans le tableau $users 
+
+    $users= $this->getDoctrine()->getRepository(Users::class)->findAll();
+
+    return $this->render('/security/lire-table-users.html.twig',
+                        ['users'=> $users]);
+
+    }
+ 
 }

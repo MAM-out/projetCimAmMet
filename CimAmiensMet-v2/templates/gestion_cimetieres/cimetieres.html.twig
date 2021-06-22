@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="container">
+  <div class="card m-1 card-2w" >
+    <div class="card-body">
+
+
+       <div class="row  text-center">
+        <div class="col">
+          <h5 >NOUVEAU CIMETIERE</h5>    
+        </div>
+      </div>
+
+      <form action="" method="get" >
+
+        <div class="row " >
+          <div class="col text-center">
+            <div class="form-group "> 
+              <input type="text" class="form-control text-center" placeholder="Nom du cimetiere"> 
+            </div> 
+          </div>     
+        </div>
+
+        <div class="row  text-center">
+          <div class="col">
+            <a class="btn btn-primary  btn-lg" href="#">CREER</a>
+          </div>
+        </div>
+
+      </form> 
+
+    </div>  
+  </div>
+</div>    
+
+
+<!-- ACTIONS SUR LES CIMETIERES -->
+<div class="container mt-5">
+    <h3 class="text-center">CIMETIERES D'AMIENS</h5>
+
+        <table class="card m-1 p-4">
+        <tbody>
+            {% for cimetiere in cimetieres %}
+            <tr>
+            <td>{{ cimetiere.getCLibelle() }}</td>
+            <td><div class="row px-2 py-1 mx-2">
+            <a href="#" class="btn btn-primary btn-block">MODIFIER</a>
+            </div></td>
+            <td><div class="row px-2 py-1 mx-2">
+            <a href="#" class="btn btn-primary btn-block">SUPPRIMER</a>
+            </div></td>
+            <td><div class="row  px-2 py-1 mx-2"><a href="#" class="btn btn-primary btn-block">LISTE USAGERS</a></div></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+
+</div>
+
+
+
+
+{% endblock %}
